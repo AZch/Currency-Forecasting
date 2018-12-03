@@ -86,6 +86,7 @@ public class Facade {
                 method.setNext(factoryMethods.createMethod(data));
             else
                 method.setNext(factoryMethods.createMethod(startData));
+            method = method.next();
         }
     }
 

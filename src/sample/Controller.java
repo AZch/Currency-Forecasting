@@ -94,10 +94,14 @@ public class Controller {
 
     public void NextMethodAction(ActionEvent actionEvent) {
         facade.goNextMethod();
+        MethodName.setText(facade.getMethod().getName());
+        DescMethodText.setText(facade.getMethod().getDesc());
     }
 
     public void ChangeMethodAction(ActionEvent actionEvent) {
-
+        facade.goBackMethod();
+        MethodName.setText(facade.getMethod().getName());
+        DescMethodText.setText(facade.getMethod().getDesc());
     }
 
     public void CalcToBayAction(ActionEvent actionEvent) {

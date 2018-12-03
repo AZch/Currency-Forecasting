@@ -28,9 +28,9 @@
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
       <Pane prefHeight="473.0" prefWidth="786.0" GridPane.rowIndex="2">
          <children>
-            <Label layoutX="14.0" layoutY="19.0" text="Текущий метод: " />
-            <Label fx:id="MethodName" layoutX="105.0" layoutY="19.0" prefHeight="17.0" prefWidth="91.0" />
-            <ToolBar layoutX="196.0" layoutY="7.0" prefHeight="40.0" prefWidth="590.0">
+            <Label layoutX="14.0" layoutY="6.0" text="Текущий метод: " />
+            <Label fx:id="MethodName" layoutX="105.0" layoutY="6.0" prefHeight="17.0" prefWidth="663.0" />
+            <ToolBar layoutX="14.0" layoutY="23.0" prefHeight="40.0" prefWidth="518.0">
               <items>
                 <Button mnemonicParsing="false" onAction="#NextMethodAction" text="Следующий метод" />
                   <Button mnemonicParsing="false" onAction="#ChangeMethodAction" text="Другой метод" />

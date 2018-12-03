@@ -34,7 +34,7 @@ public class PurchPowerParity extends Method {
             return methodNext;
         else {
             System.out.println("Следующего метода не обнаружено");
-            return null;
+            return this;
         }
     }
 
@@ -44,7 +44,7 @@ public class PurchPowerParity extends Method {
             return methodBack;
         else {
             System.out.println("Предыдущего метода не обнаружено");
-            return null;
+            return this;
         }
     }
 
