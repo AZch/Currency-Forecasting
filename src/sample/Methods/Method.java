@@ -8,7 +8,8 @@ public abstract class Method implements IMethod {
     protected IData data;
     protected Method methodNext;
     protected Method methodBack;
-    protected ArrayList<Double> graphic = new ArrayList<>();
+    protected ArrayList<Double> graphicXSeries = new ArrayList<>();
+    protected ArrayList<Double> graphicYSeries = new ArrayList<>();
 
     public Method(IData data) {
         this.data = data;
@@ -33,8 +34,17 @@ public abstract class Method implements IMethod {
             methodNext.methodBack = methodBack;
     }
 
-    public ArrayList<Double> getGraphic() {
-        return graphic;
+    public ArrayList<Double> getGraphicXSeries() {
+        return graphicXSeries;
+    }
+
+    public ArrayList<Double> getGraphicYSeries() {
+        return graphicYSeries;
+    }
+
+    protected void clearGraphic() {
+        graphicXSeries.clear();
+        graphicYSeries.clear();
     }
 
     public abstract Method next();

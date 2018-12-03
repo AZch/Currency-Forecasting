@@ -5,6 +5,7 @@ import sample.CreateMethods.FactoryCompMethods.CreateMomentum;
 import sample.CreateMethods.FactoryMethods;
 import sample.CreateMethods.FactoryOtherMethods.CreatePurchPowerParity;
 import sample.CreateMethods.FactoryOtherMethods.CreateEconomicModel;
+import sample.Data.Data;
 import sample.Data.IData;
 import sample.Methods.Method;
 import sample.XMLExport.IVisitor;
@@ -25,6 +26,7 @@ public class Facade {
 
     // Работа с данными для анализа
     public void loadData(String way) {
+        data = new Data();
         try {
             data.loadData(way);
         } catch (Exception e) {
@@ -35,6 +37,10 @@ public class Facade {
 
     public void saveData() {
         data.saveData();
+    }
+
+    public void clearData() {
+        data = null;
     }
 
     // Переход между методами
@@ -63,18 +69,28 @@ public class Facade {
         factoryMethods = new CreatePurchPowerParity();
     }
 
-    public void setFactoryTimeSeries() {
+    public void setFactoryEconomic() {
         factoryMethods = new CreateEconomicModel();
     }
 
     // Создание метода анализа
     public void createMethod() {
         if (method == null) {
-            startMethod = factoryMethods.createMethod(startData);
+            if (data != null)
+                startMethod = factoryMethods.createMethod(data);
+            else
+                startMethod = factoryMethods.createMethod(startData);
             method = startMethod;
         } else {
-            method.setNext(factoryMethods.createMethod(startData));
+            if (data != null)
+                method.setNext(factoryMethods.createMethod(data));
+            else
+                method.setNext(factoryMethods.createMethod(startData));
         }
+    }
+
+    public String calcThisMethod() {
+        return method.calc();
     }
 
     // на данный момент не нужно, так как подобные действия выполняет предыдущий метод

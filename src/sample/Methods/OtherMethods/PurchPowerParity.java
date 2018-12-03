@@ -56,8 +56,9 @@ public class PurchPowerParity extends Method {
         double rates = startRates;
 
         for (int i = 0; i < data.getData().size() && i + 1 < data.getData().size(); i++) {
-            graphic.add(periodStart);
-            graphic.add(rates);
+            clearGraphic();
+            graphicYSeries.add(periodStart);
+            graphicXSeries.add(rates);
             rates = (1 + (data.getData().get(i) - data.getData().get(i + 1)) / 100) * rates;
             periodStart++;
             if (periodStart == whatAfterPeriod) {
