@@ -5,6 +5,7 @@ import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
@@ -26,6 +27,7 @@ import java.io.IOException;
  * 2) загрузка данных из фалйа в строку
  * 3) рисование графиков по текущему методу фасада
  * 4) отправка сообщения для уведомления о работе окна
+ * 5) Запись данных в файл
  */
 
 public class Controller {
@@ -35,6 +37,10 @@ public class Controller {
     public SplitMenuButton ChooseMethodAdd;
     public AreaChart<String, Double> GraphicData;
     public TextArea DescMethodText;
+    public MenuItem PPP;
+    public MenuItem Economic;
+    public MenuItem Approach;
+    public MenuItem Momentum;
 
     private Data data = new Data();
     private Facade facade = new Facade(new CorrectData(dataWithLoad(Constants.WAY_START_DATA, data)));
@@ -85,7 +91,19 @@ public class Controller {
             MsgText.setText(whatHappened);
     }
 
+    private void writeDataFile(String file, String data, boolean isAppendExport) {
+        try(FileWriter writer = new FileWriter(file, isAppendExport)) {
+            writer.write(data);
+            writer.flush();
+            setMsgText(Constants.WRITE_FILE);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            setMsgText(Constants.ERROR_WRITE_FILE);
+        }
+    }
+
     public void addNewMethodAction(ActionEvent actionEvent) {
+        GraphicData.getData().clear();
         facade.createMethod();
         MethodName.setText(facade.getMethod().getName());
         DescMethodText.setText(facade.getMethod().getDesc());
@@ -93,12 +111,14 @@ public class Controller {
     }
 
     public void NextMethodAction(ActionEvent actionEvent) {
+        GraphicData.getData().clear();
         facade.goNextMethod();
         MethodName.setText(facade.getMethod().getName());
         DescMethodText.setText(facade.getMethod().getDesc());
     }
 
     public void ChangeMethodAction(ActionEvent actionEvent) {
+        GraphicData.getData().clear();
         facade.goBackMethod();
         MethodName.setText(facade.getMethod().getName());
         DescMethodText.setText(facade.getMethod().getDesc());
@@ -121,13 +141,12 @@ public class Controller {
     }
 
     public void ExportDataAction(ActionEvent actionEvent) {
-        facade.exportData();
-        setMsgText(Constants.EXPORT_DATA);
+        writeDataFile(Constants.FILE_TO_EXPORT, facade.exportData(), Constants.IS_APPEND_EXPORT);
+
     }
 
     public void ExportMethodAction(ActionEvent actionEvent) {
-        facade.exportMethod();
-        setMsgText(Constants.EXPORT_METHOD);
+        writeDataFile(Constants.FILE_TO_EXPORT, facade.exportMethod(), Constants.IS_APPEND_EXPORT);
     }
 
     public void EditMethodAction(ActionEvent actionEvent) {
@@ -138,17 +157,21 @@ public class Controller {
 
     public void SetPPPAction(ActionEvent actionEvent) {
         facade.setFactoryPPP();
+        ChooseMethodAdd.setText(PPP.getText());
     }
 
     public void SetEconomicModelAction(ActionEvent actionEvent) {
         facade.setFactoryEconomic();
+        ChooseMethodAdd.setText(Economic.getText());
     }
 
     public void SetApproachAction(ActionEvent actionEvent) {
         facade.setFactoryApproach();
+        ChooseMethodAdd.setText(Approach.getText());
     }
 
     public void SetMomentumAction(ActionEvent actionEvent) {
         facade.setFactoryMomentum();
+        ChooseMethodAdd.setText(Momentum.getText());
     }
 }

@@ -30,17 +30,17 @@
          <children>
             <Label layoutX="14.0" layoutY="6.0" text="Текущий метод: " />
             <Label fx:id="MethodName" layoutX="105.0" layoutY="6.0" prefHeight="17.0" prefWidth="663.0" />
-            <ToolBar layoutX="14.0" layoutY="23.0" prefHeight="40.0" prefWidth="518.0">
+            <ToolBar layoutX="14.0" layoutY="23.0" prefHeight="40.0" prefWidth="599.0">
               <items>
                 <Button mnemonicParsing="false" onAction="#NextMethodAction" text="Следующий метод" />
-                  <Button mnemonicParsing="false" onAction="#ChangeMethodAction" text="Другой метод" />
+                  <Button mnemonicParsing="false" onAction="#ChangeMethodAction" text="Предыдущий метод метод" />
                   <Button mnemonicParsing="false" onAction="#CalcToBayAction" text="Вычисление" />
                   <SplitMenuButton fx:id="ChooseMethodAdd" mnemonicParsing="false" text="Выбрать метод">
                     <items>
-                      <MenuItem mnemonicParsing="false" onAction="#SetPPPAction" text="ППП" />
-                      <MenuItem mnemonicParsing="false" onAction="#SetEconomicModelAction" text="Экономическая модель" />
-                        <MenuItem mnemonicParsing="false" onAction="#SetApproachAction" text="Метод сближения" />
-                        <MenuItem mnemonicParsing="false" onAction="#SetMomentumAction" text="Моментум" />
+                      <MenuItem fx:id="PPP" mnemonicParsing="false" onAction="#SetPPPAction" text="ППП" />
+                      <MenuItem fx:id="Economic" mnemonicParsing="false" onAction="#SetEconomicModelAction" text="Экономическая модель" />
+                        <MenuItem fx:id="Approach" mnemonicParsing="false" onAction="#SetApproachAction" text="Метод сближения" />
+                        <MenuItem fx:id="Momentum" mnemonicParsing="false" onAction="#SetMomentumAction" text="Моментум" />
                     </items>
                   </SplitMenuButton>
                   <Button mnemonicParsing="false" onAction="#addNewMethodAction" text="Добавить" />
@@ -73,7 +73,7 @@
       </Pane>
       <ToolBar prefHeight="40.0" prefWidth="785.0">
         <items>
-          <Button mnemonicParsing="false" onAction="#addDataAction" text="Добавить данные" />
+          <Button mnemonicParsing="false" onAction="#addDataAction" text="Загрузить данные" />
             <Button mnemonicParsing="false" onAction="#clearDataAction" text="Очистить данные" />
             <Button mnemonicParsing="false" onAction="#ExportDataAction" text="Экспортировать данные" />
             <Button mnemonicParsing="false" onAction="#ExportMethodAction" text="Экспортировать метод" />

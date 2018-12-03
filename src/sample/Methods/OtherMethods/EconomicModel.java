@@ -20,8 +20,9 @@ public class EconomicModel extends Method {
     private ArrayList<Double> parametrs = new ArrayList<>();
 
     public EconomicModel(IData data, String name, String desc) {
-        super(data, name, desc);
+        super(data.clone(), name, desc);
 
+        data = data.clone();
         double countParam = data.getData().get(0);
         data.getData().remove(0);
         while (countParam > 0) {

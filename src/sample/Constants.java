@@ -5,6 +5,10 @@ public class Constants {
     static final String WAY_START_DATA = "startData.txt";
     static final String OTHER_FILE_DATA = "data.txt";
 
+    // файл для экспорта данных
+    static final String FILE_TO_EXPORT = "export.txt";
+    static final Boolean IS_APPEND_EXPORT = true;
+
     // результирующее сообщение
     public static final String bay_res = "Стоит брать";
     public static final String dont_bay_res = "Брать определенно не стоит";
@@ -21,6 +25,8 @@ public class Constants {
     static final String GOOD_CREATE = "Метод создан успешно!";
     static final String GOOD_CALC = "Успешное вычисление!";
     static final String DATA_CLEAR = "Данные очищены!";
+    static final String ERROR_WRITE_FILE = "При записи в файл произошла ошибка!";
+    static final String WRITE_FILE = "Успешная запись в файл!";
 
     // имена и описание методов
     // Паритет пакупательной способности

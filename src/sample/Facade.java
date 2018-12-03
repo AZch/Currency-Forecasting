@@ -16,7 +16,7 @@ public class Facade {
     private IData startData;
     private Method method;
     private Method startMethod;
-    private IVisitor XMLExport;
+    private XMLExportVisitor XMLExport;
     private FactoryMethods factoryMethods;
 
     public Facade(IData startData) {
@@ -110,10 +110,16 @@ public class Facade {
 
     // Экспорт методов и данных
     public String exportMethod() {
-        return method.visit(XMLExport);
+        if (method == null)
+            return "";
+        else
+            return XMLExport.export(method);
     }
 
     public String exportData() {
-        return data.visit(XMLExport);
+        if (data == null)
+            return XMLExport.export(startData);
+        else
+            return XMLExport.export(data);
     }
 }

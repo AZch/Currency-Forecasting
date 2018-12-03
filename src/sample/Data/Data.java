@@ -39,4 +39,11 @@ public class Data implements IData {
     public ArrayList<Double> getData() {
         return data;
     }
+
+    @Override
+    public IData clone() {
+        Data data = new Data();
+        data.data.addAll(this.data);
+        return data;
+    }
 }

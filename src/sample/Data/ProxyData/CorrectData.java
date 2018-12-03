@@ -36,4 +36,9 @@ public class CorrectData implements IData {
     public ArrayList<Double> getData() {
         return data.getData();
     }
+
+    @Override
+    public IData clone() {
+        return data.clone();
+    }
 }

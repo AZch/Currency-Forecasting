@@ -20,8 +20,8 @@ public class PurchPowerParity extends Method {
     private double startRates = 0;
 
     public PurchPowerParity(IData data, String nameMethod, String descMethod) {
-        super(data, nameMethod, descMethod);
-
+        super(data.clone(), nameMethod, descMethod);
+        data = data.clone();
         startRates = data.getData().get(0);
         data.getData().remove(0);
         whatAfterPeriod = data.getData().get(0);

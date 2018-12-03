@@ -25,7 +25,7 @@ public abstract class Method implements IMethod {
             setBack(this);
         } else {
             Method bufMethod = methodNext;
-            while (bufMethod.next() != null) {
+            while (bufMethod.next() != bufMethod) {
                 bufMethod = bufMethod.next();
             }
             bufMethod.setNext(methodNext);
@@ -57,6 +57,10 @@ public abstract class Method implements IMethod {
 
     public String getName() {
         return name;
+    }
+
+    public IData getData() {
+        return data;
     }
 
     public abstract Method next();
