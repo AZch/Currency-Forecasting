@@ -5,8 +5,8 @@ import sample.Methods.Method;
 import sample.XMLExport.IVisitor;
 
 public class ApproachMethod extends Method {
-    public ApproachMethod(IData data) {
-        super(data);
+    public ApproachMethod(IData data, String name, String desc) {
+        super(data, name, desc);
     }
 
     @Override

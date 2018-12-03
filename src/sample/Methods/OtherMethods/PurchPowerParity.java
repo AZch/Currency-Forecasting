@@ -11,16 +11,16 @@ import sample.XMLExport.IVisitor;
  * 1 - стартовый курс
  * 2 - через какое время произойдет закупка
  * 3 - период
- * 4 - инфляция за период первой страны
- * 5 - инфляция за период второй страны
+ * 4 - инфляция за первой период  страны
+ * 5 - инфляция за второй период  страны
  * ...
  */
 public class PurchPowerParity extends Method {
     private double whatAfterPeriod = 0;
     private double startRates = 0;
 
-    public PurchPowerParity(IData data) {
-        super(data);
+    public PurchPowerParity(IData data, String nameMethod, String descMethod) {
+        super(data, nameMethod, descMethod);
 
         startRates = data.getData().get(0);
         data.getData().remove(0);
@@ -55,10 +55,10 @@ public class PurchPowerParity extends Method {
         double periodStart = 0;
         double rates = startRates;
 
+        clearGraphic();
         for (int i = 0; i < data.getData().size() && i + 1 < data.getData().size(); i++) {
-            clearGraphic();
-            graphicYSeries.add(periodStart);
-            graphicXSeries.add(rates);
+            graphicXSeries.add(periodStart);
+            graphicYSeries.add(rates);
             rates = (1 + (data.getData().get(i) - data.getData().get(i + 1)) / 100) * rates;
             periodStart++;
             if (periodStart == whatAfterPeriod) {

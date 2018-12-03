@@ -5,8 +5,8 @@ import sample.Methods.Method;
 import sample.XMLExport.IVisitor;
 
 public class Momentum extends Method {
-    public Momentum(IData data) {
-        super(data);
+    public Momentum(IData data, String name, String desc) {
+        super(data, name, desc);
     }
 
     @Override

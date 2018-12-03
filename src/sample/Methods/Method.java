@@ -10,9 +10,13 @@ public abstract class Method implements IMethod {
     protected Method methodBack;
     protected ArrayList<Double> graphicXSeries = new ArrayList<>();
     protected ArrayList<Double> graphicYSeries = new ArrayList<>();
+    protected String name;
+    protected String desc;
 
-    public Method(IData data) {
+    public Method(IData data, String name, String desc) {
         this.data = data;
+        this.name = name;
+        this.desc = desc;
     }
 
     public void setNext(Method methodNext) {
@@ -45,6 +49,14 @@ public abstract class Method implements IMethod {
     protected void clearGraphic() {
         graphicXSeries.clear();
         graphicYSeries.clear();
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public abstract Method next();

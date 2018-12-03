@@ -93,6 +93,10 @@ public class Facade {
         return method.calc();
     }
 
+    public Method getMethod() {
+        return method;
+    }
+
     // на данный момент не нужно, так как подобные действия выполняет предыдущий метод
 //    public void setNextMethod(Method method) {
 //        if (startMethod == null) {
