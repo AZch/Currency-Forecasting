@@ -38,6 +38,14 @@ public abstract class Method implements IMethod {
             methodNext.methodBack = methodBack;
     }
 
+    public void setSimpleNext(Method method) {
+        this.methodNext = method;
+    }
+
+    public void setSimpleBack(Method method) {
+        this.methodBack = method;
+    }
+
     public ArrayList<Double> getGraphicXSeries() {
         return graphicXSeries;
     }

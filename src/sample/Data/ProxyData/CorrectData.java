@@ -38,7 +38,17 @@ public class CorrectData implements IData {
     }
 
     @Override
+    public void remove(int index) {
+        data.remove(index);
+    }
+
+    @Override
     public IData clone() {
         return data.clone();
+    }
+
+    @Override
+    public void addNum(Double num) {
+        data.addNum(num);
     }
 }

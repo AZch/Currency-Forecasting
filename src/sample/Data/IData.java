@@ -9,5 +9,7 @@ public interface IData {
     public String saveData();
     String visit(IVisitor visitor);
     ArrayList<Double> getData();
+    void remove(int index);
     IData clone();
+    void addNum(Double num);
 }

@@ -56,11 +56,9 @@
 (1 + 0,02) x (0,90 долл США за 1 канадский долл) = 0,918 долл США за 1 канадский долл
 Это означает, что курс канадского доллара должен вырасти до 91,8 американского цента за доллар.
 </description>
-<WhatAfterPeriod>2.0</WhatAfterPeriod>
 <StartRates>1.0</StartRates>
+<WhatAfterPeriod>2.0</WhatAfterPeriod>
 <Data>
-<num>1.0</num>
-<num>2.0</num>
 <num>-30.0</num>
 <num>-40.0</num>
 <num>-50.0</num>

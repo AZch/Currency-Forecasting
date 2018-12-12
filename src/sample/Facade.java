@@ -10,6 +10,7 @@ import sample.Data.IData;
 import sample.Methods.Method;
 import sample.XMLExport.IVisitor;
 import sample.XMLExport.XMLExportVisitor;
+import sample.XMLLoad.XMLLoad;
 
 public class Facade {
     private IData data;
@@ -19,9 +20,12 @@ public class Facade {
     private XMLExportVisitor XMLExport;
     private FactoryMethods factoryMethods;
 
+    private XMLLoad xmlLoad;
+
     public Facade(IData startData) {
         this.startData = startData;
         XMLExport = new XMLExportVisitor();
+        xmlLoad = new XMLLoad();
     }
 
     // Работа с данными для анализа
@@ -33,6 +37,15 @@ public class Facade {
             e.printStackTrace();
             System.out.println("При загрузке данных произошла ошибка");
         }
+    }
+
+    public String loadXMLData(String dataXML) {
+        IData newData = xmlLoad.LoadData(dataXML);
+        if (newData != null)
+            data = newData;
+        else
+            return Constants.ERROR_LOAD_XML;
+        return Constants.COMPLETE_XML_LOAD;
     }
 
     public void saveData() {
@@ -90,6 +103,22 @@ public class Facade {
         }
     }
 
+    // Создание метода анализа
+    public String loadXMLMethod(String dataXML) {
+        Method newMethod = xmlLoad.LoadMethod(dataXML);
+        if (newMethod == null)
+            return Constants.ERROR_LOAD_XML;
+
+        if (method == null) {
+            startMethod = newMethod;
+            method = startMethod;
+        } else {
+            method.setNext(newMethod);
+            method = method.next();
+        }
+        return Constants.COMPLETE_XML_LOAD;
+    }
+
     public String calcThisMethod() {
         return method.calc();
     }
@@ -111,5 +140,32 @@ public class Facade {
             return XMLExport.export(startData);
         else
             return XMLExport.export(data);
+    }
+
+    public String delMethod() {
+        if (method == null) {
+            return Constants.ERROR_DELETE;
+        }
+
+        boolean isStartMethod = false;
+        if (method == startMethod)
+            isStartMethod = true;
+
+        if (method.back() != method && method.next() != method) {
+            method.next().setSimpleBack(method.back());
+            method.back().setSimpleNext(method.next());
+            method = method.back();
+        } else if (method.back() != method) {
+            method.back().setSimpleNext(null);
+            method = method.back();
+        } else if (method.next() != method) {
+            method.next().setSimpleBack(null);
+            method = method.next();
+        } else
+            method = null;
+
+        if (isStartMethod)
+            startMethod = method;
+        return Constants.COMPLETE_DELETE;
     }
 }

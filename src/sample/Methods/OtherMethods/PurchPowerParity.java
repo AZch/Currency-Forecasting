@@ -21,11 +21,11 @@ public class PurchPowerParity extends Method {
 
     public PurchPowerParity(IData data, String nameMethod, String descMethod) {
         super(data.clone(), nameMethod, descMethod);
-        data = data.clone();
-        startRates = data.getData().get(0);
-        data.getData().remove(0);
-        whatAfterPeriod = data.getData().get(0);
-        data.getData().remove(0);
+        this.data = data.clone();
+        startRates = this.data.getData().get(0);
+        this.data.remove(0);
+        whatAfterPeriod = this.data.getData().get(0);
+        this.data.remove(0);
     }
 
     @Override
