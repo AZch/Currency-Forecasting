@@ -98,16 +98,6 @@ public class Facade {
         return method;
     }
 
-    // на данный момент не нужно, так как подобные действия выполняет предыдущий метод
-//    public void setNextMethod(Method method) {
-//        if (startMethod == null) {
-//            startMethod = method;
-//            this.method = method;
-//        } else {
-//            this.method.setNext(method);
-//        }
-//    }
-
     // Экспорт методов и данных
     public String exportMethod() {
         if (method == null)
