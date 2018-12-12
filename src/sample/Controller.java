@@ -25,9 +25,8 @@ import java.io.IOException;
  * дополнительные методы:
  * 1) загрузка данных из файла в данные
  * 2) загрузка данных из фалйа в строку
- * 3) рисование графиков по текущему методу фасада
- * 4) отправка сообщения для уведомления о работе окна
- * 5) Запись данных в файл
+ * 3) отправка сообщения для уведомления о работе окна
+ * 4) Запись данных в файл
  */
 
 public class Controller {
@@ -44,6 +43,7 @@ public class Controller {
 
     private Data data = new Data();
     private Facade facade = new Facade(new CorrectData(dataWithLoad(Constants.WAY_START_DATA, data)));
+    private MakeGraphics makeGraphic = new MakeGraphics();
 
     // загрузка данных из файла в данные
     private Data dataWithLoad(String way, Data data) {
@@ -70,19 +70,6 @@ public class Controller {
             System.out.println(e.getMessage());
         }
         return resRead;
-    }
-
-    // рисование графиков по текущему методу фасада
-    private void makeGraphic(Method method) {
-        XYChart.Series<String, Double> seriesGraph = new XYChart.Series<>();
-        GraphicData.getData().clear();
-        GraphicData.getData().add(seriesGraph);
-        GraphicData.setCreateSymbols(false);
-        for (int i = 0; i < method.getGraphicXSeries().size(); i++) {
-            if (method.getGraphicYSeries().size() > i) {
-                seriesGraph.getData().add(new XYChart.Data<String, Double>(String.valueOf(method.getGraphicXSeries().get(i)), method.getGraphicYSeries().get(i)));
-            }
-        }
     }
 
     // отправка сообщения для уведомления о работе окна
@@ -126,7 +113,7 @@ public class Controller {
 
     public void CalcToBayAction(ActionEvent actionEvent) {
         ResAnalysis.setText(facade.calcThisMethod());
-        makeGraphic(facade.getMethod());
+        makeGraphic.makeGraphic(facade.getMethod(), GraphicData);
         setMsgText(Constants.GOOD_CALC);
     }
 
