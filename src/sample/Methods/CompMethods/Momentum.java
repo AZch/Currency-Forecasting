@@ -11,11 +11,11 @@ public class Momentum extends Method {
 
     public Momentum(IData data, String name, String desc) {
         super(data.clone(), name, desc);
-        data = data.clone();
-        courseN = data.getData().get(0);
-        data.getData().remove(0);
-        whatAfterPeriod = data.getData().get(0);
-        data.getData().remove(0);
+        this.data = data.clone();
+        courseN = this.data.getData().get(0);
+        this.data.remove(0);
+        whatAfterPeriod = this.data.getData().get(0);
+        this.data.remove(0);
     }
 
     @Override

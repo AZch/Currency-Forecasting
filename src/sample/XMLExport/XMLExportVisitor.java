@@ -1,6 +1,7 @@
 package sample.XMLExport;
 
 import com.sun.xml.internal.bind.v2.model.core.ID;
+import sample.Constants;
 import sample.Data.Data;
 import sample.Data.IData;
 import sample.Data.ProxyData.CorrectData;
@@ -30,87 +31,87 @@ public class XMLExportVisitor implements IVisitor {
 
     @Override
     public String visitApproachMethod(ApproachMethod method) {
-        String res = "<ApproachMethod>" + "\n";
+        String res = "<" + Constants.NAME_XML_APPROACH + ">" + "\n";
 
-        res += "<name>" + method.getName() + "</name>\n";
-        res += "<description>" + method.getDesc() + "</description>\n";
+        res += "<" + Constants.NAME + ">" + method.getName() + "</" + Constants.NAME + ">\n";
+        res += "<" + Constants.DESC + ">" + method.getDesc() + "</" + Constants.DESC + ">\n";
 
         res += export(method.getData());
 
-        res += "</ApproachMethod>\n";
+        res += "</" + Constants.NAME_XML_APPROACH + ">\n";
 
         return res;
     }
 
     @Override
     public String visitMomentum(Momentum method) {
-        String res = "<Momentum>" + "\n";
+        String res = "<" + Constants.NAME_XML_MOMENTUM  + ">" + "\n";
 
-        res += "<name>" + method.getName() + "</name>\n";
-        res += "<description>" + method.getDesc() + "</description>\n";
-        res += "<courseN>" + String.valueOf(method.getCourseN()) + "</courseN>" + "\n";
-        res += "<WhatAfterPeriod>" + String.valueOf(method.getWhatAfterPeriod()) + "</WhatAfterPeriod>" + "\n";
+        res += "<" + Constants.NAME + ">" + method.getName() + "</" + Constants.NAME + ">\n";
+        res += "<" + Constants.DESC + ">" + method.getDesc() + "</" + Constants.DESC + ">\n";
+        res += "<" + Constants.COURSE_N + ">" + String.valueOf(method.getCourseN()) + "</" + Constants.COURSE_N + ">" + "\n";
+        res += "<" + Constants.WHAT_AFTER_PERIOD + ">" + String.valueOf(method.getWhatAfterPeriod()) + "</" + Constants.WHAT_AFTER_PERIOD + ">" + "\n";
 
         res += export(method.getData());
 
-        res += "</Momentum>\n";
+        res += "</" + Constants.NAME_XML_MOMENTUM  + ">\n";
 
         return res;
     }
 
     @Override
     public String visitPurchPowerParity(PurchPowerParity method) {
-        String res = "<PurchPowerParity>" + "\n";
+        String res = "<" + Constants.NAME_XML_PPP + ">" + "\n";
 
-        res += "<name>" + method.getName() + "</name>\n";
-        res += "<description>" + method.getDesc() + "</description>\n";
-        res += "<WhatAfterPeriod>" + String.valueOf(method.getWhatAfterPeriod()) + "</WhatAfterPeriod>" + "\n";
-        res += "<StartRates>" + String.valueOf(method.getStartRates()) + "</StartRates>" + "\n";
+        res += "<" + Constants.NAME + ">" + method.getName() + "</" + Constants.NAME + ">\n";
+        res += "<" + Constants.DESC + ">" + method.getDesc() + "</" + Constants.DESC + ">\n";
+        res += "<" + Constants.RATES + ">" + String.valueOf(method.getStartRates()) + "</" + Constants.RATES + ">" + "\n";
+        res += "<" + Constants.WHAT_AFTER_PERIOD + ">" + String.valueOf(method.getWhatAfterPeriod()) + "</" + Constants.WHAT_AFTER_PERIOD + ">" + "\n";
 
 
         res += export(method.getData());
 
-        res += "</PurchPowerParity>\n";
+        res += "</" + Constants.NAME_XML_PPP + ">\n";
 
         return res;
     }
 
     @Override
     public String visitEconomicModel(EconomicModel method) {
-        String res = "<EconomicModel>" + "\n";
+        String res = "<" + Constants.NAME_XML_ECONOMIC + ">" + "\n";
 
-        res += "<name>" + method.getName() + "</name>\n";
-        res += "<description>" + method.getDesc() + "</description>\n";
+        res += "<" + Constants.DESC + ">" + method.getName() + "</" + Constants.DESC + ">\n";
+        res += "<" + Constants.DESC + ">" + method.getDesc() + "</" + Constants.DESC + ">\n";
         for (Double num : method.getParametrs())
-            res += "<parametrs>" + String.valueOf(num) + "</parametrs>" + "\n";
+            res += "<" + Constants.PARAMETRS + ">" + String.valueOf(num) + "</" + Constants.PARAMETRS + ">" + "\n";
 
         res += export(method.getData());
 
-        res += "</EconomicModel>\n";
+        res += "</" + Constants.NAME_XML_ECONOMIC + ">\n";
 
         return res;
     }
 
     @Override
     public String visitData(Data data) {
-        String res = "<Data>" + "\n";
+        String res = "<" + Constants.DATA_CLASS + ">" + "\n";
 
         for (Double num : data.getData())
-            res += "<num>" + String.valueOf(num) + "</num>" + "\n";
+            res += "<" + Constants.NUM_DATA + ">" + String.valueOf(num) + "</" + Constants.NUM_DATA + ">" + "\n";
 
-        res += "</Data>\n";
+        res += "</" + Constants.DATA_CLASS + ">\n";
 
         return res;
     }
 
     @Override
     public String visitCorrectData(CorrectData correctData) {
-        String res = "<CorrectData>" + "\n";
+        String res = "<" + Constants.CORRECT_DATA_CLASS + ">" + "\n";
 
         for (Double num : correctData.getData())
-            res += "<num>" + String.valueOf(num) + "</num>" + "\n";
+            res += "<" + Constants.NUM_DATA + ">" + String.valueOf(num) + "</" + Constants.NUM_DATA + ">" + "\n";
 
-        res += "</CorrectData>\n";
+        res += "</" + Constants.CORRECT_DATA_CLASS + ">\n";
 
         return res;
     }

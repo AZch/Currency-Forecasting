@@ -41,9 +41,19 @@ public class Data implements IData {
     }
 
     @Override
+    public void remove(int index) {
+        data.remove(index);
+    }
+
+    @Override
     public IData clone() {
         Data data = new Data();
         data.data.addAll(this.data);
         return data;
+    }
+
+    @Override
+    public void addNum(Double num) {
+        data.add(num);
     }
 }

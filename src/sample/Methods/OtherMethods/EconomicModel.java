@@ -22,13 +22,13 @@ public class EconomicModel extends Method {
     public EconomicModel(IData data, String name, String desc) {
         super(data.clone(), name, desc);
 
-        data = data.clone();
-        double countParam = data.getData().get(0);
-        data.getData().remove(0);
+        this.data = data.clone();
+        double countParam = this.data.getData().get(0);
+        this.data.remove(0);
         while (countParam > 0) {
             countParam--;
-            parametrs.add(data.getData().get(0));
-            data.getData().remove(0);
+            parametrs.add(this.data.getData().get(0));
+            this.data.remove(0);
         }
     }
 

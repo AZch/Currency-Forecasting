@@ -1,5 +1,16 @@
 package sample;
 
+/**
+ * Констаты программ:
+ * 1) файлы с данными для чтения
+ * 2) файл для экспорта данных
+ * 3) результирующее сообщение
+ * 4) задание комиссии в долях от 1
+ * 5) сообщения для вывода пользователю
+ * 6) возвращяемые коды
+ * 7) имена и описание методов
+ * 8) данные XML без названия методов
+ */
 public class Constants {
     // файлы с данными для чтения
     static final String WAY_START_DATA = "startData.txt";
@@ -17,7 +28,7 @@ public class Constants {
     // задание комиссии в долях от 1
     public static final Double commission = 0.1;
 
-    // Сообщения для вывода пользователю
+    // сообщения для вывода пользователю
     static final String EXPORT_DATA = "Даннные экспортированны!";
     static final String EXPORT_METHOD = "Метод экспортирован!";
     static final String GOOD_START_WORK = "Программа готова к работе!";
@@ -27,10 +38,19 @@ public class Constants {
     static final String DATA_CLEAR = "Данные очищены!";
     static final String ERROR_WRITE_FILE = "При записи в файл произошла ошибка!";
     static final String WRITE_FILE = "Успешная запись в файл!";
+    static final String ERROR_LOAD_XML = "Не удалось совершить загрузку из XML файла!";
+    static final String COMPLETE_XML_LOAD = "Загрузка из XML файла прошла успешно!";
+    static final String ERROR_DELETE = "Ошибка при удалении!";
+    static final String COMPLETE_DELETE = "Удаление прошло успешно!";
+
+    // возвращяемые коды
+    static final int NORNAL_WRITE = 0;
+    static final int ERROR_WRITE = -1;
 
     // имена и описание методов
     // Паритет пакупательной способности
     public static final String NAME_PPP = "Паритет пакупательной способности";
+    public static final String NAME_XML_PPP = "PurchPowerParity";
     public static final String DESC_PPP = "Одним из важнейших экономических показателей государства является его ВВП.\n" +
             "Оптимальный вариант для подсчета мирового ВВП базируется на коэффициентах сравнения покупательской способности валют.\n" +
             "Значения этих коэффициентов определяются отношением цен покупательских корзин различных государств.\n" +
@@ -46,6 +66,7 @@ public class Constants {
             "Это означает, что курс канадского доллара должен вырасти до 91,8 американского цента за доллар.\n";
     // Экономическая модель
     public static final String NAME_ECONOMIC = "Экономическая модель";
+    public static final String NAME_XML_ECONOMIC = "EconomicModel";
     public static final String DESC_ECONOMIC = "Данная модель связывает обменный курс конкретной валюты со всеми факторами, влияющими, по мнению трейдера, на ее движение. \n" +
             "Обычно при построении эконометрической модели используются величины из экономической теории. \n" +
             "Однако в подсчеты может быть добавлена любая переменная, которая, как считается, оказывает сильное влияние на обменный курс.\n" +
@@ -63,6 +84,7 @@ public class Constants {
             "(в зависимости от того, значение коэффициента отрицательное или положительное).\n";
     // Метод сближения
     public static final String NAME_APPROACH = "Метод сближения";
+    public static final String NAME_XML_APPROACH = "ApproachMethod";
     public static final String DESC_APPROACH = "Метод сближения (расхождения) показателя среднего движения валютного курса (MACD) \n" +
             "представляет собой метод технического анализа с помощью МACD-гистограммы. \n" +
             "График индикатора MACD состоит из двух линий, пересечение которых дает сигналы аналитикам и практикам рынка: \n" +
@@ -75,6 +97,7 @@ public class Constants {
             "Если быстрая линия расположена ниже медленной, то МАCD-гистограмма дает отрицательное значение и изображается ниже горизонтальной оси. \n";
     // Моментум
     public static final String NAME_MOMENTUM = "Моментум";
+    public static final String NAME_XML_MOMENTUM = "Momentum";
     public static final String DESC_MOMENTUM = "Моментум (М0) отслеживает ускорение тренда, рост или снижение скорости его движения. \n" +
             "Каждое значение моментума вычисляется как разница между значениями курса через определенный временной интервал:\n" +
             "M0 = Pc - Pn, \n" +
@@ -84,4 +107,15 @@ public class Constants {
             "Когда график моментума достигает нового максимума, это означает настрой рынка на дальнейшее повышение валютного курса. \n" +
             "Если валютный курс растет, а график моментума начинает падать, то это \"предупреждение\", что \"вершина\" тренда близка. \n" +
             "То же самое происходит при движении курса вниз\n";
+
+    // данные XML без названия методов
+    public static final String NAME = "name";
+    public static final String DESC = "description";
+    public static final String WHAT_AFTER_PERIOD = "WhatAfterPeriod";
+    public static final String RATES = "StartRates";
+    public static final String PARAMETRS = "parametrs";
+    public static final String DATA_CLASS = "Data";
+    public static final String CORRECT_DATA_CLASS = "CorrectData";
+    public static final String NUM_DATA = "num";
+    public static final String COURSE_N = "CourseN";
 }
